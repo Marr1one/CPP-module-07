@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marwan <marwan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 03:17:13 by root              #+#    #+#             */
-/*   Updated: 2025/10/28 00:26:32 by root             ###   ########.fr       */
+/*   Updated: 2026/01/27 15:26:51 by marwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,13 @@ void swap(T &x, T &y)
 template <typename T>
 T min(T x, T y)
 {
-	if (x < y)
-		return (x);
-	else if (x > y)
-		return (y);
-	else return (y);
+	if (x < y) return (x);
+	return (y);
 }
 
 template <typename T>
 T max(T x, T y)
 {
-	if (x < y)
-		return (y);
-	else if (x > y)
-		return (x);
-	else return (y);
+	if (x > y) return (x);
+	return (y);
 }

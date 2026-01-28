@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marwan <marwan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 00:16:27 by root              #+#    #+#             */
-/*   Updated: 2025/10/28 17:23:33 by root             ###   ########.fr       */
+/*   Updated: 2026/01/28 16:47:34 by marwan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 template <typename T>
 class Array 
 {
-	public:
+	private:
+		T *_array;
+		size_t _size;
+		public:
 		Array() : _array(NULL), _size(0){};
 		Array(unsigned int n) : _size(n)
 		{
 			_array = new T[n];
 		};
-		Array(Array &other)  : _size(other._size)
+		~Array(){delete[] _array;};
+		Array(const Array &other)  : _size(other._size)
 		{
 			if (_size == 0)
 				_array = NULL;
@@ -32,13 +36,12 @@ class Array
 					_array[i] = other._array[i];
 			}
 		};
-		~Array(){delete[] _array;};
-		Array &operator=(Array &other)
+		Array &operator=(const Array &other)
 		{
 			if (this != &other)
 			{
-				delete[] _array;
-				this->size = other._size;
+				delete[] _array; 
+				_size = other._size;
 				if (_size == 0)
 					_array = NULL;
 				else 
@@ -57,8 +60,5 @@ class Array
 			return _array[index];
 		};
 		size_t size() const {return _size;};
-	private:
-		T *_array;
-		size_t _size;
 };
 
