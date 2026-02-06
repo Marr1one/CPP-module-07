@@ -37,11 +37,11 @@ class Awesome
 	private:
 		int _n;
 };
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get_n(); return o; }
 
 template< typename T >
 
-void print( T const & x ) { std::cout << x << std::endl; return; }
+void print( T const & x ) {std::cout << x << std::endl;}
 
 int main() 
 {
