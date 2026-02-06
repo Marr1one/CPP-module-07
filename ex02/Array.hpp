@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marwan <marwan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maissat <maissat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 00:16:27 by root              #+#    #+#             */
-/*   Updated: 2026/01/28 16:47:34 by marwan           ###   ########.fr       */
+/*   Updated: 2026/02/06 15:52:43 by maissat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Array
 	private:
 		T *_array;
 		size_t _size;
-		public:
+	public:
 		Array() : _array(NULL), _size(0){};
 		Array(unsigned int n) : _size(n)
 		{
@@ -40,7 +40,7 @@ class Array
 		{
 			if (this != &other)
 			{
-				delete[] _array; 
+				delete[] this->_array; 
 				_size = other._size;
 				if (_size == 0)
 					_array = NULL;
@@ -54,6 +54,12 @@ class Array
 			return *this;
 		};
 		T &operator[](int index)
+		{
+			if (index > _size)
+				throw std::runtime_error("Index out of bounds !\n");
+			return _array[index];
+		};
+		const T &operator[](int index) const 
 		{
 			if (index > _size)
 				throw std::runtime_error("Index out of bounds !\n");
